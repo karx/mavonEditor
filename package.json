@@ -5,6 +5,7 @@
   "main": "dist/mavon-editor.js",
   "types": "./mavon-editor.d.ts",
   "scripts": {
+    "prepare": "run-s lint test ci-build",
     "dev": "webpack-dev-server --progress --config webpack/webpack.dev.js",
     "ci-build": "webpack --progress --config webpack/webpack.build.js",
     "build": "run-s lint test ci-build",
