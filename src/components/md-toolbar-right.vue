@@ -3,26 +3,26 @@
         <slot name="right-toolbar-before" />
         <button type="button" v-if="toolbars.navigation" @click="$clicks('navigation')" v-show="!s_navigation"
                 class="op-icon fa fa-mavon-bars"
-                aria-hidden="true" :title="`${d_words.tl_navigation_on} (F8)`"></button>
+                aria-hidden="true" :title="`${d_words.tl_navigation_on} ${showShortCut ? '(F8)' : ''}`"></button>
         <button type="button" v-if="toolbars.navigation" @click="$clicks('navigation')" v-show="s_navigation"
                 class="op-icon fa fa-mavon-bars selected"
-                aria-hidden="true" :title="`${d_words.tl_navigation_off} (F8)`"></button>
+                aria-hidden="true" :title="`${d_words.tl_navigation_off} ${showShortCut ? '(F8)' : ''}`"></button>
         <button type="button" v-if="toolbars.preview" @click="$clicks('preview')" v-show="s_preview_switch"
                 class="op-icon fa fa-mavon-eye-slash selected"
-                aria-hidden="true" :title="`${d_words.tl_edit} (F9)`"></button>
+                aria-hidden="true" :title="`${d_words.tl_edit} ${showShortCut ? '(F9)' : ''}`"></button>
         <button type="button" v-if="toolbars.preview" @click="$clicks('preview')" v-show="!s_preview_switch"
                 class="op-icon fa fa-mavon-eye"
-                aria-hidden="true" :title="`${d_words.tl_preview} (F9)`"></button>
+                aria-hidden="true" :title="`${d_words.tl_preview} ${showShortCut ? '(F9)' : ''}`"></button>
         <button type="button" v-if="toolbars.fullscreen" @click="$clicks('fullscreen')" v-show="!s_fullScreen"
                 class="op-icon fa fa-mavon-arrows-alt"
-                :title="`${d_words.tl_fullscreen_on} (F10)`" aria-hidden="true"></button>
+                :title="`${d_words.tl_fullscreen_on} ${showShortCut ? '(F10)' : ''}`" aria-hidden="true"></button>
         <button type="button" v-if="toolbars.fullscreen" @click="$clicks('fullscreen')" v-show="s_fullScreen"
                 class="op-icon fa fa-mavon-compress selected"
-                :title="`${d_words.tl_fullscreen_off} (F10)`" aria-hidden="true"></button>
+                :title="`${d_words.tl_fullscreen_off} ${showShortCut ? '(F10)' : ''}`" aria-hidden="true"></button>
         <button type="button" v-if="toolbars.readmodel" @click="$clicks('read')" class="op-icon fa fa-mavon-window-maximize" aria-hidden="true"
-                :title="`${d_words.tl_read} (F11)`"></button>
+                :title="`${d_words.tl_read} ${showShortCut ? '(F11)' : ''}`"></button>
         <button type="button" v-if="toolbars.subfield" @click="$clicks('subfield')" class="op-icon fa fa-mavon-columns" aria-hidden="true"
-                :class = "{'selected': s_subfield}" :title="`${s_subfield ? d_words.tl_single_column : d_words.tl_double_column} (F12)`"></button>
+                :class = "{'selected': s_subfield}" :title="`${s_subfield ? d_words.tl_single_column : d_words.tl_double_column} ${showShortCut ? '(F12)' : ''}`"></button>
         <span
                 v-if=" toolbars.help && toolbars.htmlcode && toolbars.readmodel && toolbars.fullscreen && toolbars.subfield && toolbars.navigation"
                 class="op-icon-divider"></span>
@@ -55,6 +55,10 @@ export default {
         d_words: {
             type: Object,
             required: true
+        },
+        showShortCut: {
+             type: Boolean,
+             required: true
         }
     },
     methods: {

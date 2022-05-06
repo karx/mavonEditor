@@ -4,13 +4,14 @@
         <div class="v-note-op" v-show="toolbarsFlag" :style="{'background': toolbarsBackground}">
             <v-md-toolbar-left ref="toolbar_left" :editable="editable" :transition="transition" :d_words="d_words"
                                @toolbar_left_click="toolbar_left_click" @toolbar_left_addlink="toolbar_left_addlink" :toolbars="toolbars"
-                               @imgAdd="$imgAdd" @imgDel="$imgDel" @imgTouch="$imgTouch" :image_filter="imageFilter"
+                               @imgAdd="$imgAdd" @imgDel="$imgDel" @imgTouch="$imgTouch" :image_filter="imageFilter" :showShortCut="showShortCut"
                                :class="{'transition': transition}">
                 <slot name="left-toolbar-before" slot="left-toolbar-before" />
                 <slot name="left-toolbar-after" slot="left-toolbar-after" />
             </v-md-toolbar-left>
             <v-md-toolbar-right ref="toolbar_right" :d_words="d_words" @toolbar_right_click="toolbar_right_click"
                                 :toolbars="toolbars"
+                                :showShortCut="showShortCut"
                                 :s_subfield="s_subfield"
                                 :s_preview_switch="s_preview_switch" :s_fullScreen="s_fullScreen"
                                 :s_html_code="s_html_code"
@@ -237,6 +238,10 @@ export default {
             default: 0
         },
         shortCut:{
+            type: Boolean,
+            default: true
+        },
+        showShortCut:{
             type: Boolean,
             default: true
         }
